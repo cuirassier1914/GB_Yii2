@@ -1,0 +1,1 @@
+{"virtualbox":{"/data/mysite.local/app":{"create":true,"guestpath":"/data/mysite.local/app","hostpath":"C:/Users/Sergio/Desktop/Developpement/vm/app","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/Sergio/Desktop/Developpement/vm","disabled":false,"__vagrantfile":true}}}
