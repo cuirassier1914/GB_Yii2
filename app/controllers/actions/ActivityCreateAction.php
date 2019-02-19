@@ -24,7 +24,7 @@ class ActivityCreateAction extends Action
             \Yii::$app->activity->createActivity($activity);
             $activity -> validate();
         } else {
-            $activity = \Yii::$app-> activity -> getModel();
+            $activity = \Yii::$app->activity->getModel();
         }
 
 
