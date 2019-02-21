@@ -10,13 +10,15 @@ namespace app\controllers;
 
 
 use app\base\BaseController;
-use app\controllers\actions\DayCreateAction;
+use app\models\Day;
+
+/*use app\controllers\actions\DayCreateAction;*/
 
 class DayController extends BaseController
 {
-    public  function actions() {
-        return [
-            'day' => ['class' => DayAction::class, 'myName' => 'Serge'],
-        ];
+    public  function actionIndex() {
+        $model = new Day();
+
+        return $this->render('index', ['model' => $model]);
     }
 }
