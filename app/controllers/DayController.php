@@ -18,13 +18,9 @@ use app\controllers\actions\DayShowAction;
 class DayController extends BaseController
 {
     public  function actions() {
-        /*$model = new Day();
-
-        return $this->render('day', ['model' => $model]);*/
 
         return [
-            'show' => ['class' => DayShowAction::class],
-            /*'delete' => ['class' => DeleteAction::class]*/
+            'show' => ['class' => DayShowAction::class]
         ];
     }
 }
