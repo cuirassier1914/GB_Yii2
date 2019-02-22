@@ -1,5 +1,7 @@
 <?php
     use yii\bootstrap\ActiveForm;
+
+    var_dump('myName');
 ?>
 
 

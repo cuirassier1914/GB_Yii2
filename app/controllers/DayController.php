@@ -11,14 +11,20 @@ namespace app\controllers;
 
 use app\base\BaseController;
 use app\models\Day;
+use app\controllers\actions\DayShowAction;
 
 /*use app\controllers\actions\DayCreateAction;*/
 
 class DayController extends BaseController
 {
-    public  function actionIndex() {
-        $model = new Day();
+    public  function actions() {
+        /*$model = new Day();
 
-        return $this->render('index', ['model' => $model]);
+        return $this->render('day', ['model' => $model]);*/
+
+        return [
+            'show' => ['class' => DayShowAction::class],
+            /*'delete' => ['class' => DeleteAction::class]*/
+        ];
     }
 }

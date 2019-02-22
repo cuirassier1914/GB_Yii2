@@ -26,6 +26,10 @@ $config = [
             'class' => \app\components\ActivityComponent::class,
             'activity_class' => '\app\models\Activity'
         ],
+        'day' => [
+            'class' => \app\components\DayComponent::class,
+            'day_class' => 'app\models\Day'
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

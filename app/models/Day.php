@@ -20,19 +20,18 @@ class Day extends Model
     public $activities;
 
 
+    function rules() {
+        return [
+            ['date', 'date', 'format' => 'php: Y-m-d']
+        ];
+    }
+
     public function attributeLabels()
     {
-        $today = getdate();
 
-        $is_weekend = ($today['wday'] == 0 || $today['wday'] == 6) ? 'выходной' : 'рабочий';
-
-        $activities = [];
 
         return [
-            'today' => $today,
-          'date' => 'Дата',
-          'is_weekend' => $is_weekend,
-          'activities' => $activities
+
         ];
     }
 }
