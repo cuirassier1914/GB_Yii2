@@ -20,4 +20,16 @@ class Calender extends Model
 
         return $this -> today;
     }
+
+    public  function getMonths() {
+        $year = (int)$this ->getToday()['year'];
+        $months = [];
+
+        for($i=1; $i < 13; $i++ ){
+            $number = cal_days_in_month(CAL_GREGORIAN, $i, $year);
+            $months[] = $number;
+        }
+
+        return $months;
+    }
 }
