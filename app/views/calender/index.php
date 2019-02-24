@@ -7,30 +7,19 @@
  */
 
 
-
-use yii\bootstrap\ActiveForm;
-
 ?>
 <h1><?= $model -> getToday()['year'] ?></h1>
 
-<?php foreach($model -> getMonths() as $month): ?>
+<?php $month = 1; ?>
+<?php foreach($model -> getMonths() as $item): ?>
+
 <div class="month">
-<?php for($i = 1; $i <= $month; $i++): ?>
-    <!--<a href="#"><?/*= $i */?></a>-->
-
-    <?php $form=ActiveForm::begin([
-        'action' => '',
-        'method' => 'POST',
-        'id' => 'day',
-        'options' => [
-            'enctype' => ''
-        ]
-    ]); ?>
-
-    <button type="submit" class="btn btn-default"><?= $i ?></button>
-
-    <?php ActiveForm::end(); ?>
-
+    <h3><?= $model -> monthsNames[$month - 1] ?></h3>
+<?php for($i = 1; $i <= $item; $i++): ?>
+    <a href="day/show?day=<?= $i ?>&month=<?= $month ?>&year=<?= $model -> getToday()['year'] ?>">
+        <button type="submit"><?= $i ?></button>
+    </a>
 <?php endfor; ?>
 </div>
+<?php $month += 1; ?>
 <?php endforeach; ?>

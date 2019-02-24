@@ -14,6 +14,11 @@ use yii\base\Model;
 class Calender extends Model
 {
     public $today;
+    public $day;
+    public $monthsNames = [
+      'Январь', 'Февраль', 'Март', 'Апрель', 'Май',
+      'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+    ];
 
     public function getToday(){
         $this -> today = getdate();

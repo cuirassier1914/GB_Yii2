@@ -15,17 +15,11 @@ class DayShowAction extends Action
 {
     public function run() {
 
-        $day = \Yii::$app->day->getModel();
-
-        if (\Yii::$app->request->isPost) {
-            $day = \Yii::$app->day->getModel(\Yii::$app->request->post);
-            \Yii::$app->day->showDay($day);
-            $day -> validate();
+        if (\Yii::$app->request->isGet) {
+            $day = \Yii::$app->day->getModel(\Yii::$app->request->get());
         } else {
             $day = \Yii::$app->day->getModel();
         }
-
-
 
         return $this->controller->render('show', ['day' => $day]);
     }

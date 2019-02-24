@@ -1,7 +1,9 @@
 <?php
+
+
     use yii\bootstrap\ActiveForm;
 
-    var_dump('myName');
+    var_dump($activity->date_start);
 ?>
 
 
@@ -21,6 +23,8 @@
         <?= $form->field($activity, 'description') -> textarea(); ?>
         <?= $form->field($activity, 'date_start'); ?>
         <?= $form->field($activity, 'is_blocked') -> checkbox(); ?>
+        <?= $form->field($activity, 'email'); ?>
+        <?= $form->field($activity, 'image') -> fileInput();?>
 
         <div class="form-group">
             <button type="submit" class="btn btn-default">Отправить</button>
@@ -28,4 +32,5 @@
 
         <?php ActiveForm::end(); ?>
     </div>
+    <a href="/calender"><button>Календарь</button></a>
 </div>

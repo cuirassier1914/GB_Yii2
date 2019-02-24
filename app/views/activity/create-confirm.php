@@ -1,0 +1,46 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Sergio
+ * Date: 23.02.2019
+ * Time: 21:51
+ */
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+?>
+
+<dev class="row">
+    <p>Вы ввели следующую информацию</p>
+    <ul>
+        <li><label>Заголовок</label>: <?= Html::encode($activity->title) ?></li>
+        <li><label>Описание</label>: <?= Html::encode($activity->description) ?></li>
+        <li><label>Блокирующее</label>: <?= Html::encode($activity->is_blocked) ?></li>
+        <li><label>Дата начала</label>: <?= Html::encode($activity->date_start) ?></li>
+        <li><label>Email</label>: <?= Html::encode($activity->email) ?></li>
+        <li><label>Image</label>: <?= Html::encode($activity->image) ?></li>
+        <li><img src="/images/<?= $activity->image ?>" </li>
+    </ul>
+</dev>
+
+<?php $form=ActiveForm::begin([
+    'action' => '/activity/create',
+    'method' => 'POST',
+    'id' => 'activity',
+    'options' => [
+        'enctype' => ''
+    ]
+]); ?>
+
+<?= $form->field($activity, 'title') -> label(false) -> hiddenInput(['value' => Html::encode($activity->title)]); ?>
+<?= $form->field($activity, 'description') -> label(false) -> hiddenInput(['value' => Html::encode($activity->description)]); ?>
+<?= $form->field($activity, 'date_start') -> label(false) -> hiddenInput(['value' => Html::encode($activity->date_start)]); ?>
+<?= $form->field($activity, 'is_blocked') -> label(false) -> hiddenInput(['value' => Html::encode($activity->is_blocked)]); ?>
+<?= $form->field($activity, 'email') -> label(false) -> hiddenInput(['value' => Html::encode($activity->email)]); ?>
+<?/*= $form->field($activity, 'image') -> label(false) -> hiddenInput(['value' => Html::encode($activity->image)]); */?>
+
+<div class="form-group">
+    <button type="submit" class="btn btn-default">Редактировать</button>
+</div>
+
+<?php ActiveForm::end(); ?>
