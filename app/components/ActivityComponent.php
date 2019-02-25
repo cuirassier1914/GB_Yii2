@@ -10,6 +10,7 @@ namespace app\components;
 
 use app\models\Activity;
 use yii\base\Component;
+use yii\helpers\FileHelper;
 
 class ActivityComponent extends Component
 {
@@ -40,25 +41,28 @@ class ActivityComponent extends Component
     public function createActivity(&$model){
         if($model -> validate()) {
 
+//            print_r($model->getAttributes());exit;
             if ($model->image) {
                 $path = $this->getPathSaveFile();
                 $name = mt_rand(0, 9999).time().'.'.$model->image->getExtension();
 
-
+//                echo 'ok';exit;
                 if (!$model->image->saveAs($path.$name)) {
                     $model->addError('image', 'не удалось загрузить файл');
                     return false;
                 }
 
-                $model->image->$name;
+                $model->image=$name;
             }
 
             return true;
         }
+        return false;
     }
 
     private function getPathSaveFile() {
-        return \Yii::getAlias('@app/web/images');
+        FileHelper::createDirectory(\Yii::getAlias('@app/web/images'));
+        return \Yii::getAlias('@app/web/images/');
     }
 
 }
