@@ -14,9 +14,6 @@
                 'action' => '',
                 'method' => 'POST',
                 'id' => 'activity',
-                'options' => [
-                        'enctype' => ''
-                ]
         ]); ?>
 
         <?= $form->field($activity, 'title'); ?>
