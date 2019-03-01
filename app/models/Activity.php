@@ -53,7 +53,7 @@ class Activity extends Model
             [['title', 'date_start'], 'required'],
             ['is_blocked', 'boolean'],
             ['email', 'email'],
-            [['image'], 'file', 'extensions' => 'png, jpg', 'maxFiles' => 4]
+            [['image'], 'file', 'extensions' => 'png, jpg'/*, 'maxFiles' => 4*/]
         ];
     }
 

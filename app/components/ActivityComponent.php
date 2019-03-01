@@ -10,6 +10,7 @@ namespace app\components;
 
 use app\models\Activity;
 use yii\base\Component;
+use yii\helpers\FileHelper;
 
 class ActivityComponent extends Component
 {
@@ -50,7 +51,7 @@ class ActivityComponent extends Component
                     return false;
                 }
 
-                $model->image->$name;
+                $model->image=$name;
             }
 
             return true;
@@ -58,7 +59,8 @@ class ActivityComponent extends Component
     }
 
     private function getPathSaveFile() {
-        return \Yii::getAlias('@app/web/images');
+        FileHelper::createDirectory(\Yii::getAlias('@app/web/images'));
+        return \Yii::getAlias('@app/web/images/');
     }
 
 }

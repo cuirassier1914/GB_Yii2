@@ -29,12 +29,11 @@ class ActivityCreateAction extends Action
 
         } else {
 
+            $activity = \Yii::$app->activity->getModel();
+
             if (\Yii::$app->request->isGet) {
                 $activity = \Yii::$app->activity->getModel(\Yii::$app->request->get());
-                return $this->controller->render('create', ['activity' => $activity]);
             }
-
-            $activity = \Yii::$app->activity->getModel();
 
         }
 

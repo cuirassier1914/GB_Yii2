@@ -3,7 +3,7 @@
 
     use yii\bootstrap\ActiveForm;
 
-    var_dump($activity->date_start);
+    //var_dump($activity->date_start);
 ?>
 
 
@@ -14,9 +14,6 @@
                 'action' => '',
                 'method' => 'POST',
                 'id' => 'activity',
-                'options' => [
-                        'enctype' => ''
-                ]
         ]); ?>
 
         <?= $form->field($activity, 'title'); ?>
