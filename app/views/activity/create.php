@@ -19,7 +19,9 @@
         <?= $form->field($activity, 'title'); ?>
         <?= $form->field($activity, 'description') -> textarea(); ?>
         <?= $form->field($activity, 'date_start'); ?>
+        <?= $form->field($activity, 'date_end'); ?>
         <?= $form->field($activity, 'is_blocked') -> checkbox(); ?>
+        <?= $form->field($activity, 'is_repeat') -> checkbox(); ?>
         <?= $form->field($activity, 'email'); ?>
         <?= $form->field($activity, 'image') -> fileInput();?>
 
