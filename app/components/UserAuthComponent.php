@@ -43,12 +43,37 @@ class UserAuthComponent extends Component
             return true;
         }
 
-
-
-
     }
 
     private function hashPassword($password) {
         return \Yii::$app->security->generatePasswordHash($password);
+    }
+
+    public function loginUser(&$model):bool {
+
+        $user = $this->getUserByEmail($model->email);
+
+        if (!$user) {
+            $model->addError('email', 'Пользователь с email '.$model->email.' не зарегистрирован');
+            return false;
+        }
+
+        if (!$this->validatePassword($model->password, $user->password_hash)) {
+            $model->addError('password', 'Неверный пароль!');
+            return false;
+        }
+
+        $user->username = $user->email;
+
+        return \Yii::$app->user->login($user);
+
+    }
+
+    public function getUserByEmail($email) {
+        return $this->getModel()::find()->andWhere(['email' => $email])->one();
+    }
+
+    public function validatePassword($password, $hash) {
+        return \Yii::$app->security->validatePassword($password, $hash);
     }
 }

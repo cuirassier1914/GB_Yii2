@@ -18,6 +18,9 @@ use Yii;
  */
 class UsersBase extends \yii\db\ActiveRecord
 {
+
+    public $username;
+
     /**
      * {@inheritdoc}
      */

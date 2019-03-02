@@ -9,7 +9,6 @@
 namespace app\controllers;
 
 
-use app\base\BaseController;
 use app\components\UserAuthComponent;
 use yii\web\Controller;
 
@@ -31,9 +30,28 @@ class AuthController extends Controller
                 \Yii::$app->session->addFlash('success', 'Пользователь успешно зарегистрирован с id '.$model->id);
             }
 
-            return $this->redirect(['/auth/signin']);
+            return $this->redirect(['/auth/sign-in']);
         }
 
         return $this->render('signup', ['model' => $model]);
+    }
+
+    public function actionSignIn()
+    {
+        /** @var UserAuthComponent $comp */
+        $comp = \Yii::$app->auth;
+
+        $model = $comp->getModel(\Yii::$app->request->post());
+        $model->setScenario($model::SCENARIO_SIGNIN);
+
+        if (\Yii::$app->request->isPost) {
+
+            if ($comp->loginUser($model)) {
+                $this->redirect(['/activity/create']);
+            }
+        }
+
+        return $this->render('signin', ['model' => $model]);
+
     }
 }
