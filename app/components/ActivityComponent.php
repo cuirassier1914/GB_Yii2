@@ -30,7 +30,13 @@ class ActivityComponent extends Component
 
         if (isset($params['date_start'])) {
             $model->date_start = $params['date_start'];
+
+            /*if (!isset($params['date_end'])) {
+                $model->date_end = $params['date_start'];
+            }*/
         }
+
+
 
 
         return $model;

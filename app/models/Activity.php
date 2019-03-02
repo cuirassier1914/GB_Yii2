@@ -43,6 +43,10 @@ class Activity extends Model
             }
         }
 
+        if(empty($this->date_end) || $this->date_end < $this->date_start) {
+            $this->date_end = $this->date_start;
+        }
+
         return parent::beforeValidate();
     }
 
