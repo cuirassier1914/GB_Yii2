@@ -32,8 +32,8 @@ $config = [
             'day_class' => 'app\models\Day'
         ],
         'dao' => [
-            'class' => \app\components\DAOComponent::class,
-        ]
+            'class' => \app\components\DaoComponent::class,
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

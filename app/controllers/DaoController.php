@@ -10,13 +10,13 @@ namespace app\controllers;
 
 
 use app\base\BaseController;
-use app\components\DAOComponent;
+use app\components\DaoComponent;
 
-class DAOController extends BaseController
+class DaoController extends BaseController
 {
     public  function actionIndex() {
 
-        $modelo = new DAOComponent();
+        $model = new DaoComponent();
 
         return $this->render('index', ['model' => $model]);
     }
