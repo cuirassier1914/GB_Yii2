@@ -33,6 +33,10 @@ $config = [
         ],
         'dao' => \app\components\DaoComponent::class,
         'auth' => \app\components\UserAuthComponent::class,
+        'authManager' => [
+            'class' => yii\rbac\DbManager::class,
+        ],
+        'rbac' => \app\components\RbacComponent::class,
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

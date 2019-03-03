@@ -40,6 +40,9 @@ class UserAuthComponent extends Component
         $model->password_hash = $this->hashPassword($model->password);
 
         if ($model->save()) {
+
+            \Yii::$app->rbac->addRole($model->id);
+
             return true;
         }
 

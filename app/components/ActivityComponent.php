@@ -69,4 +69,8 @@ class ActivityComponent extends Component
         return \Yii::getAlias('@app/web/images/');
     }
 
+    public function getActivity($id) {
+        return $this->getModel()::find()->andWhere(['id' => $id])->one();
+    }
+
 }

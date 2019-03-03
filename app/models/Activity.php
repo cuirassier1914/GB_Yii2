@@ -13,7 +13,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\web\UploadedFile;
 
-class Activity extends Model
+class Activity extends ActivityBase
 {
     public $title;
     public $description;
@@ -52,7 +52,7 @@ class Activity extends Model
 
 
     function rules() {
-        return [
+        return array_merge([
             ['title', 'string', 'min' => 2, 'max' => 150],
             ['date_start', 'date', 'format' => 'php: Y-m-d'],
             ['date_end', 'date', 'format' => 'php: Y-m-d'],
@@ -62,7 +62,7 @@ class Activity extends Model
             ['is_repeat', 'boolean'],
             ['email', 'email'],
             [['image'], 'file', 'extensions' => 'png, jpg'/*, 'maxFiles' => 4*/]
-        ];
+        ], parent::rules());
     }
 
     function attributeLabels() {
