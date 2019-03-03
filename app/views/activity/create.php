@@ -1,5 +1,10 @@
 <?php
 
+$t = '01.01.2019';
+$t = \DateTime::createFromFormat('d.m.Y', $t);
+$t = $t->format('Y-m-d');
+var_dump($t);
+
 
     use yii\bootstrap\ActiveForm;
 
@@ -15,6 +20,7 @@
                 'method' => 'POST',
                 'id' => 'activity',
         ]); ?>
+
 
         <?= $form->field($activity, 'title'); ?>
         <?= $form->field($activity, 'description') -> textarea(); ?>

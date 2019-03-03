@@ -24,6 +24,7 @@ class ActivityComponent extends Component
         $model = new $this -> activity_class;
 
 
+
         if ($params && is_array($params)) {
             $model -> load($params);
         }
@@ -58,7 +59,12 @@ class ActivityComponent extends Component
                 }
 
                 $model->image=$name;
+
+                //сохранение в БД
+
             }
+
+            $model->save();
 
             return true;
         }

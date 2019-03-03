@@ -15,12 +15,13 @@ use yii\web\UploadedFile;
 
 class Activity extends ActivityBase
 {
-    public $title;
+    /*public $title;
     public $description;
     public $date_start;
     public $date_end;
     public $is_blocked;
-    public $is_repeat;
+    public $is_repeat;*/
+
     public $email;
 
     /**@var UploadedFile */
@@ -38,8 +39,16 @@ class Activity extends ActivityBase
         if (!empty($this->date_start)) {
             $this->date_start=\DateTime::createFromFormat('d.m.Y', $this->date_start);
 
+
             if ($this->date_start) {
                 $this->date_start=$this->date_start->format('Y-m-d');
+            }
+        }
+
+        if(!empty($this->date_end)){
+            $this->date_end=\DateTime::createFromFormat('d.m.Y', $this->date_end);
+            if($this->date_end){
+                $this->date_end=$this->date_end->format('Y-m-d');
             }
         }
 
@@ -53,6 +62,7 @@ class Activity extends ActivityBase
 
     function rules() {
         return array_merge([
+            ['user_id', 'default', 'value' => \Yii::$app->session->get('__id')],
             ['title', 'string', 'min' => 2, 'max' => 150],
             ['date_start', 'date', 'format' => 'php: Y-m-d'],
             ['date_end', 'date', 'format' => 'php: Y-m-d'],
@@ -65,7 +75,7 @@ class Activity extends ActivityBase
         ], parent::rules());
     }
 
-    function attributeLabels() {
+    /*function attributeLabels() {
         return [
             'title' => 'Заголовок',
             'description' => 'Описание',
@@ -74,7 +84,7 @@ class Activity extends ActivityBase
             'is_blocked' => 'Блокирующее',
             'is_repeat' => 'Повторяющееся'
         ];
-    }
+    }*/
 
 
     public function loadFile() {

@@ -13,6 +13,7 @@ use yii\widgets\ActiveForm;
 <dev class="row">
     <p>Вы ввели следующую информацию</p>
     <ul>
+        <li><label>ID</label>: <?= Html::encode($activity->user_id) ?></li>
         <li><label>Заголовок</label>: <?= Html::encode($activity->title) ?></li>
         <li><label>Описание</label>: <?= Html::encode($activity->description) ?></li>
         <li><label>Дата начала</label>: <?= Html::encode($activity->date_start) ?></li>
