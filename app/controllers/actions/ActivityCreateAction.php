@@ -37,10 +37,10 @@ class ActivityCreateAction extends Action
         } else {
 
             $activity = \Yii::$app->activity->getModel();
-
-            if (\Yii::$app->request->isGet) {
-                $activity = \Yii::$app->activity->getModel(\Yii::$app->request->get());
-            }
+//дублирование. Не должно быть никогда наполнение модели из гет запроса, для далнешего изменения (сохранения в бд).
+//            if (\Yii::$app->request->isGet) {
+//                $activity = \Yii::$app->activity->getModel(\Yii::$app->request->get());
+//            }
 
         }
 

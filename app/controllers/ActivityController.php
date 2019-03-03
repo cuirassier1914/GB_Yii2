@@ -19,7 +19,7 @@ class ActivityController extends BaseController
     public  function actions() {
         return [
             'create' => ['class' => ActivityCreateAction::class],
-            'confirm' => ['class' => ConfirmAction::class],
+//            'confirm' => ['class' => ConfirmAction::class],
             'edit' => ['class' => ActivityCreateAction::class]
         ];
     }
