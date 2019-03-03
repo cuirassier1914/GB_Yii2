@@ -15,12 +15,12 @@ use yii\web\UploadedFile;
 
 class Activity extends ActivityBase
 {
-    public $title;
-    public $description;
-    public $date_start;
-    public $date_end;
-    public $is_blocked;
-    public $is_repeat;
+//    public $title;
+//    public $description;
+//    public $date_start;
+//    public $date_end;
+//    public $is_blocked;
+//    public $is_repeat;
     public $email;
 
     /**@var UploadedFile */
