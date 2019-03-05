@@ -10,6 +10,7 @@ namespace app\controllers;
 
 use app\base\BaseController;
 use app\components\ActivityComponent;
+use app\controllers\actions\ActivityConfirmAction;
 use app\controllers\actions\ActivityCreateAction;
 use yii\web\HttpException;
 
@@ -19,7 +20,7 @@ class ActivityController extends BaseController
     public  function actions() {
         return [
             'create' => ['class' => ActivityCreateAction::class],
-            'confirm' => ['class' => ConfirmAction::class],
+            'confirm' => ['class' => ActivityConfirmAction::class],
             'edit' => ['class' => ActivityCreateAction::class]
         ];
     }

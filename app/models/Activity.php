@@ -27,6 +27,8 @@ class Activity extends ActivityBase
     /**@var UploadedFile */
     public $image;
 
+    public $confirmed;
+
 
 
     public function beforeValidate()
@@ -36,7 +38,7 @@ class Activity extends ActivityBase
 
 
 
-        if (!empty($this->date_start)) {
+/*        if (!empty($this->date_start)) {
             $this->date_start=\DateTime::createFromFormat('d.m.Y', $this->date_start);
 
 
@@ -50,7 +52,7 @@ class Activity extends ActivityBase
             if($this->date_end){
                 $this->date_end=$this->date_end->format('Y-m-d');
             }
-        }
+        }*/
 
         if(empty($this->date_end) || $this->date_end < $this->date_start) {
             $this->date_end = $this->date_start;
@@ -70,6 +72,7 @@ class Activity extends ActivityBase
             [['title', 'date_start'], 'required'],
             ['is_blocked', 'boolean'],
             ['is_repeat', 'boolean'],
+            ['confirmed', 'boolean'],
             ['email', 'email'],
             [['image'], 'file', 'extensions' => 'png, jpg'/*, 'maxFiles' => 4*/]
         ], parent::rules());

@@ -39,12 +39,25 @@ class UserAuthComponent extends Component
 
         $model->password_hash = $this->hashPassword($model->password);
 
-        if ($model->save()) {
+        $transaction = \Yii::$app->db->beginTransaction();
+        try {
+            $model->save();
+            \Yii::$app->rbac->addRole($model->id);
+
+            $transaction->commit();
+
+            return true;
+        }
+        catch (\Throwable $e) {
+            $transaction->rollBack();
+        }
+
+        /*if ($model->save()) {
 
             \Yii::$app->rbac->addRole($model->id);
 
             return true;
-        }
+        }*/
 
     }
 

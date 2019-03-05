@@ -29,16 +29,6 @@ class ActivityComponent extends Component
             $model -> load($params);
         }
 
-        if (isset($params['date_start'])) {
-            $model->date_start = $params['date_start'];
-
-            /*if (!isset($params['date_end'])) {
-                $model->date_end = $params['date_start'];
-            }*/
-        }
-
-
-
 
         return $model;
     }
@@ -60,11 +50,12 @@ class ActivityComponent extends Component
 
                 $model->image=$name;
 
-                //сохранение в БД
-
             }
 
-            $model->save();
+
+                $model->save();
+
+
 
             return true;
         }
@@ -78,5 +69,6 @@ class ActivityComponent extends Component
     public function getActivity($id) {
         return $this->getModel()::find()->andWhere(['id' => $id])->one();
     }
+
 
 }

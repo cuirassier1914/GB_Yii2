@@ -1,22 +1,25 @@
 <?php
 
-$t = '01.01.2019';
+/*$t = '01.01.2019';
 $t = \DateTime::createFromFormat('d.m.Y', $t);
 $t = $t->format('Y-m-d');
-var_dump($t);
+var_dump($t);*/
+
+
 
 
     use yii\bootstrap\ActiveForm;
 
-    //var_dump($activity->date_start);
+    var_dump($activity->confirmed);
 ?>
 
 
 <div class="row">
     <div class="col-md-6">
         <h2>Создание нового задания</h2>
+
         <?php $form=ActiveForm::begin([
-                'action' => '',
+                'action' => '/activity/confirm',
                 'method' => 'POST',
                 'id' => 'activity',
         ]); ?>
@@ -32,7 +35,7 @@ var_dump($t);
         <?= $form->field($activity, 'image') -> fileInput();?>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-default">Отправить</button>
+            <button type="submit" class="btn btn-default">Создать</button>
         </div>
 
         <?php ActiveForm::end(); ?>

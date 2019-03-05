@@ -21,6 +21,8 @@ class DayShowAction extends Action
             $day = \Yii::$app->day->getModel();
         }
 
-        return $this->controller->render('show', ['day' => $day]);
+        $activity = \Yii::$app->activity->getModel();
+
+        return $this->controller->render('show', ['day' => $day, 'activity' => $activity]);
     }
 }

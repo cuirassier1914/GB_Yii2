@@ -29,18 +29,19 @@ class ActivityCreateAction extends Action
         if (\Yii::$app->request->isPost) {
             $activity = $comp->getModel(\Yii::$app->request->post());
 
-            if ($comp->createActivity($activity)) {
+            /*if ($comp->createActivity($activity)) {
                 return $this->controller->render('create-confirm', ['activity' => $activity]);
-            }
+            }*/
 
 
         } else {
 
             $activity = \Yii::$app->activity->getModel();
 
-            if (\Yii::$app->request->isGet) {
+            //Теперь дата дня для подстановки передается через POST
+            /*if (\Yii::$app->request->isGet) {
                 $activity = \Yii::$app->activity->getModel(\Yii::$app->request->get());
-            }
+            }*/
 
         }
 
