@@ -61,6 +61,12 @@ $config = [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
+                [
+                    'class' => 'yii\log\FileTarget', //в файл
+                    'categories' => ['activity_create'], //категория логов
+                    'logFile' => '@runtime/logs/activity_create.log', //куда сохранять
+                    'logVars' => [] //не добавлять в лог глобальные переменные ($_SERVER, $_SESSION...)
+                ],
             ],
         ],
         'db' => $db,

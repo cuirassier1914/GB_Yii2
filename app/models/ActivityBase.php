@@ -30,11 +30,13 @@ class ActivityBase extends \yii\db\ActiveRecord
         return 'activity';
     }
 
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
+
         return [
             [['title', 'date_start', 'user_id'], 'required'],
             [['description'], 'string'],

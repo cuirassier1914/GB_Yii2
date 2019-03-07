@@ -34,16 +34,19 @@ class Activity extends ActivityBase
     public function beforeValidate()
     {
 
-            $this->loadFile();
+        $this->loadFile();
 
 
-
-/*        if (!empty($this->date_start)) {
+        if (!empty($this->date_start)) {
             $this->date_start=\DateTime::createFromFormat('d.m.Y', $this->date_start);
+
+            $dateAfterCreateFrom = $this->date_start;
 
 
             if ($this->date_start) {
                 $this->date_start=$this->date_start->format('Y-m-d');
+
+                $dateAfterFormate = $this->date_start;
             }
         }
 
@@ -52,11 +55,26 @@ class Activity extends ActivityBase
             if($this->date_end){
                 $this->date_end=$this->date_end->format('Y-m-d');
             }
-        }*/
+        }
 
         if(empty($this->date_end) || $this->date_end < $this->date_start) {
             $this->date_end = $this->date_start;
         }
+
+
+        //Запись в лог
+        $post = \Yii::$app->request->post();
+
+        $messageLog = [
+            'status' => 'Создание активности',
+            'post' => $post,
+            'dateAfterCreateFrom' => $dateAfterCreateFrom,
+            'dateAfterFormate' => $dateAfterFormate
+        ];
+
+        \Yii::info($messageLog, 'activity_create');
+
+
 
         return parent::beforeValidate();
     }

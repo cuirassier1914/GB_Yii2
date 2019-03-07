@@ -33,6 +33,8 @@ class ActivityConfirmAction extends Action
                     return $this->controller->render('../day/show', ['day' => $day, 'activity' => $activity]);
                 }
 
+
+
                 return $this->controller->render('create-confirm', ['activity' => $activity]);
             //}
 
