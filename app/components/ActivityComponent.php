@@ -24,12 +24,9 @@ class ActivityComponent extends Component
         $model = new $this -> activity_class;
 
 
+
         if ($params && is_array($params)) {
             $model -> load($params);
-        }
-
-        if (isset($params['date_start'])) {
-            $model->date_start = $params['date_start'];
         }
 
 
@@ -52,7 +49,13 @@ class ActivityComponent extends Component
                 }
 
                 $model->image=$name;
+
             }
+
+
+                $model->save();
+
+
 
             return true;
         }
@@ -62,5 +65,10 @@ class ActivityComponent extends Component
         FileHelper::createDirectory(\Yii::getAlias('@app/web/images'));
         return \Yii::getAlias('@app/web/images/');
     }
+
+    public function getActivity($id) {
+        return $this->getModel()::find()->andWhere(['id' => $id])->one();
+    }
+
 
 }

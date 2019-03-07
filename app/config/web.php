@@ -31,14 +31,17 @@ $config = [
             'class' => \app\components\DayComponent::class,
             'day_class' => 'app\models\Day'
         ],
-        'dao' => [
-            'class' => \app\components\DaoComponent::class,
+        'dao' => \app\components\DaoComponent::class,
+        'auth' => \app\components\UserAuthComponent::class,
+        'authManager' => [
+            'class' => yii\rbac\DbManager::class,
         ],
+        'rbac' => \app\components\RbacComponent::class,
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\Users',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [

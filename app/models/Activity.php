@@ -13,18 +13,21 @@ namespace app\models;
 use yii\base\Model;
 use yii\web\UploadedFile;
 
-class Activity extends Model
+class Activity extends ActivityBase
 {
-    public $title;
+    /*public $title;
     public $description;
     public $date_start;
     public $date_end;
     public $is_blocked;
-    public $is_repeat;
+    public $is_repeat;*/
+
     public $email;
 
     /**@var UploadedFile */
     public $image;
+
+    public $confirmed;
 
 
 
@@ -35,12 +38,24 @@ class Activity extends Model
 
 
 
-        if (!empty($this->date_start)) {
+/*        if (!empty($this->date_start)) {
             $this->date_start=\DateTime::createFromFormat('d.m.Y', $this->date_start);
+
 
             if ($this->date_start) {
                 $this->date_start=$this->date_start->format('Y-m-d');
             }
+        }
+
+        if(!empty($this->date_end)){
+            $this->date_end=\DateTime::createFromFormat('d.m.Y', $this->date_end);
+            if($this->date_end){
+                $this->date_end=$this->date_end->format('Y-m-d');
+            }
+        }*/
+
+        if(empty($this->date_end) || $this->date_end < $this->date_start) {
+            $this->date_end = $this->date_start;
         }
 
         return parent::beforeValidate();
@@ -48,7 +63,8 @@ class Activity extends Model
 
 
     function rules() {
-        return [
+        return array_merge([
+            ['user_id', 'default', 'value' => \Yii::$app->session->get('__id')],
             ['title', 'string', 'min' => 2, 'max' => 150],
             ['date_start', 'date', 'format' => 'php: Y-m-d'],
             ['date_end', 'date', 'format' => 'php: Y-m-d'],
@@ -56,12 +72,13 @@ class Activity extends Model
             [['title', 'date_start'], 'required'],
             ['is_blocked', 'boolean'],
             ['is_repeat', 'boolean'],
+            ['confirmed', 'boolean'],
             ['email', 'email'],
             [['image'], 'file', 'extensions' => 'png, jpg'/*, 'maxFiles' => 4*/]
-        ];
+        ], parent::rules());
     }
 
-    function attributeLabels() {
+    /*function attributeLabels() {
         return [
             'title' => 'Заголовок',
             'description' => 'Описание',
@@ -70,7 +87,7 @@ class Activity extends Model
             'is_blocked' => 'Блокирующее',
             'is_repeat' => 'Повторяющееся'
         ];
-    }
+    }*/
 
 
     public function loadFile() {
