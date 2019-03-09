@@ -92,4 +92,5 @@ class UserAuthComponent extends Component
     public function validatePassword($password, $hash) {
         return \Yii::$app->security->validatePassword($password, $hash);
     }
+
 }

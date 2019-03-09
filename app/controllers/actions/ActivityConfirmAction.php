@@ -22,7 +22,6 @@ class ActivityConfirmAction extends Action
 
             $activity = $comp->getModel(\Yii::$app->request->post());
 
-            //if ($comp->createActivity($activity)) {
 
                 if ($activity->confirmed) {
 
@@ -36,7 +35,6 @@ class ActivityConfirmAction extends Action
 
 
                 return $this->controller->render('create-confirm', ['activity' => $activity]);
-            //}
 
     }
 }

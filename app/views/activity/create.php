@@ -1,16 +1,10 @@
 <?php
 
-/*$t = '01.01.2019';
-$t = \DateTime::createFromFormat('d.m.Y', $t);
-$t = $t->format('Y-m-d');
-var_dump($t);*/
-
-
-
 
     use yii\bootstrap\ActiveForm;
+    use yii\jui\DatePicker;
 
-    var_dump($activity->confirmed);
+
 ?>
 
 
@@ -19,7 +13,7 @@ var_dump($t);*/
         <h2>Создание нового задания</h2>
 
         <?php $form=ActiveForm::begin([
-                'action' => '/activity/confirm',
+                'action' => '/activity/create',
                 'method' => 'POST',
                 'id' => 'activity',
         ]); ?>
@@ -27,6 +21,15 @@ var_dump($t);*/
 
         <?= $form->field($activity, 'title'); ?>
         <?= $form->field($activity, 'description') -> textarea(); ?>
+
+        <?/*= $form->field($activity, 'date_start')->widget(DatePicker::class,
+            [
+                'options' =>
+                    ['class' => ['form-control']],
+                'dateFormat' => 'd.m.Y'
+            ]
+        ); */?>
+
         <?= $form->field($activity, 'date_start'); ?>
         <?= $form->field($activity, 'date_end'); ?>
         <?= $form->field($activity, 'is_blocked') -> checkbox(); ?>

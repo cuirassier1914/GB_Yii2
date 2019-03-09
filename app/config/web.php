@@ -70,6 +70,14 @@ $config = [
             ],
         ],
         'db' => $db,
+        'viewFormatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php: d.m.Y'
+        ],
+        'sqlFormatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php: Y-m-d'
+        ],
 
         'urlManager' => [
             'enablePrettyUrl' => true,

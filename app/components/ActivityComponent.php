@@ -36,7 +36,10 @@ class ActivityComponent extends Component
     /** @param $model Activity */
 
     public function createActivity(&$model){
-        if($model -> validate()) {
+
+        $model -> beforeValidate();
+
+        if($model->validate()) {
 
             if ($model->image) {
                 $path = $this->getPathSaveFile();
@@ -52,8 +55,10 @@ class ActivityComponent extends Component
 
             }
 
-
+            if ($model->confirmed) {
                 $model->save();
+            }
+
 
 
 

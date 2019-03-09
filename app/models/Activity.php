@@ -15,12 +15,6 @@ use yii\web\UploadedFile;
 
 class Activity extends ActivityBase
 {
-    /*public $title;
-    public $description;
-    public $date_start;
-    public $date_end;
-    public $is_blocked;
-    public $is_repeat;*/
 
     public $email;
 
@@ -36,45 +30,18 @@ class Activity extends ActivityBase
 
         $this->loadFile();
 
-
         if (!empty($this->date_start)) {
-            $this->date_start=\DateTime::createFromFormat('d.m.Y', $this->date_start);
-
-            $dateAfterCreateFrom = $this->date_start;
-
-
-            if ($this->date_start) {
-                $this->date_start=$this->date_start->format('Y-m-d');
-
-                $dateAfterFormate = $this->date_start;
-            }
+            $this->date_start=\Yii::$app->sqlFormatter->asDate($this->date_start);
         }
 
         if(!empty($this->date_end)){
-            $this->date_end=\DateTime::createFromFormat('d.m.Y', $this->date_end);
-            if($this->date_end){
-                $this->date_end=$this->date_end->format('Y-m-d');
-            }
+            $this->date_end=\Yii::$app->sqlFormatter->asDate($this->date_end);
+
         }
 
         if(empty($this->date_end) || $this->date_end < $this->date_start) {
             $this->date_end = $this->date_start;
         }
-
-
-        //Запись в лог
-        $post = \Yii::$app->request->post();
-
-        $messageLog = [
-            'status' => 'Создание активности',
-            'post' => $post,
-            'dateAfterCreateFrom' => $dateAfterCreateFrom,
-            'dateAfterFormate' => $dateAfterFormate
-        ];
-
-        \Yii::info($messageLog, 'activity_create');
-
-
 
         return parent::beforeValidate();
     }
@@ -96,7 +63,7 @@ class Activity extends ActivityBase
         ], parent::rules());
     }
 
-    /*function attributeLabels() {
+    function attributeLabels() {
         return [
             'title' => 'Заголовок',
             'description' => 'Описание',
@@ -105,7 +72,7 @@ class Activity extends ActivityBase
             'is_blocked' => 'Блокирующее',
             'is_repeat' => 'Повторяющееся'
         ];
-    }*/
+    }
 
 
     public function loadFile() {
