@@ -15,6 +15,10 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
+        'activity' => [
+            'class' => \app\components\ActivityComponent::class,
+            'activity_class' => '\app\models\Activity'
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
