@@ -9,25 +9,28 @@
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+
+
 ?>
 
 <h1>День</h1>
-<h3><?= $day->date_title; ?></h3>
-<p><?= $day->is_weekend; ?></p>
-<?php if (isset($day -> activities[0])): ?>
-    <h3>Активности</h3>
-<?php else: ?>
-    <h3>Нет запланированных активностей</h3>
-<?php endif; ?>
+
+<h3><?= $day -> date; ?></h3>
+
+<!--<h3><?/*= $day->date_title; */?></h3>
+<p><?/*= $day->is_weekend; */?></p>-->
+
+<div class="col-md-12">
+    <?= \app\widgets\ActivitySearchWidget\ActivitySearchWidget::widget(['date_start' => $day -> date]); ?>
+</div>
+
+
 
 
 <?php $form=ActiveForm::begin([
     'action' => '/activity/create',
     'method' => 'POST',
     'id' => 'activity',
-    /*    'options' => [
-            'enctype' => ''
-        ]*/
 ]); ?>
 
 <?= $form->field($activity, 'date_start') -> label(false) -> hiddenInput(['value' => Html::encode($day->date)]); ?>

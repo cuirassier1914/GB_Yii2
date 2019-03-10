@@ -36,6 +36,7 @@ class ActivitySearchController extends Controller
     public function actionIndex()
     {
         $searchModel = new ActivitySearch();
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

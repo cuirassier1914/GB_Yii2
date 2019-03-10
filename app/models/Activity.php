@@ -24,7 +24,6 @@ class Activity extends ActivityBase
     public $confirmed;
 
 
-
     public function beforeValidate()
     {
 
@@ -78,5 +77,9 @@ class Activity extends ActivityBase
     public function loadFile() {
         /* @var UploadedFile Image **/
         $this->image = UploadedFile::getInstance($this, 'image');
+    }
+
+    public function findByDay($date_start) {
+        return parent::find()->andWhere(['date_start', $date_start]);
     }
 }

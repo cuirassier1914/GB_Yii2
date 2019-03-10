@@ -14,10 +14,12 @@ use yii\base\Model;
 class Day extends Model
 {
     public $today;
-    public $date;
+    public $date = '01';
     public $date_title;
     public $is_weekend;
     public $activities;
+
+    public $user_id;
 
 
     function rules() {

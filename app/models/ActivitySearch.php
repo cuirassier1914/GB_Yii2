@@ -38,9 +38,13 @@ class ActivitySearch extends Activity
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+
+
+
+    public function search($params, $filter=[])
     {
-        $query = Activity::find();
+
+        $query = Activity::find()->andFilterWhere($filter);
 
         // add conditions that should always apply here
 
@@ -56,8 +60,9 @@ class ActivitySearch extends Activity
             return $dataProvider;
         }
 
-        // grid filtering conditions
-        $query->andFilterWhere([
+
+        //для получения активностей авторизованного пользователя
+        $filterParams = [
             'id' => $this->id,
             'date_start' => $this->date_start,
             'date_end' => $this->date_end,
@@ -65,8 +70,17 @@ class ActivitySearch extends Activity
             'is_blocked' => $this->is_blocked,
             'is_repeat' => $this->is_repeat,
             'date_created' => $this->date_created,
-            'user_id' => $this->user_id,
-        ]);
+            'user_id' => \Yii::$app->session['__id'],
+        ];
+
+        if (\Yii::$app->rbac->canViewEditAll()) {
+            $filterParams['user_id'] = $this->user_id;
+        }
+
+
+
+        // grid filtering conditions
+        $query->andFilterWhere($filterParams);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description]);
