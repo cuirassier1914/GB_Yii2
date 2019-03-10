@@ -78,6 +78,10 @@ $config = [
             'class' => 'yii\i18n\Formatter',
             'dateFormat' => 'php: Y-m-d'
         ],
+        'headersFormatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php: j F Y'
+        ],
 
         'urlManager' => [
             'enablePrettyUrl' => true,

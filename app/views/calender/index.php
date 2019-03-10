@@ -11,14 +11,16 @@ use yii\bootstrap\ActiveForm;
 <h1><?= $model -> getToday()['year'] ?></h1>
 
 <?php $month = 1; ?>
+
+<div class="row">
 <?php foreach($model -> getMonths() as $item): ?>
 
-<div class="month">
+
+<div class="col-md-4">
     <h3><?= $model -> monthsNames[$month - 1] ?></h3>
 <?php for($i = 1; $i <= $item; $i++): ?>
-    <!--<a href="day/show?day=<?/*= $i */?>&month=<?/*= $month */?>&year=<?/*= $model -> getToday()['year'] */?>">
-        <button type="submit"><?/*= $i */?></button>
-    </a>-->
+
+
 
     <?php $form=ActiveForm::begin([
         'action' => '/day/show',
@@ -36,6 +38,9 @@ use yii\bootstrap\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 <?php endfor; ?>
+
 </div>
+
 <?php $month += 1; ?>
 <?php endforeach; ?>
+</div>

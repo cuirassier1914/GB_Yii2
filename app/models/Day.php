@@ -14,7 +14,7 @@ use yii\base\Model;
 class Day extends Model
 {
     public $today;
-    public $date = '01';
+    public $date;
     public $date_title;
     public $is_weekend;
     public $activities;
@@ -28,14 +28,6 @@ class Day extends Model
         ];
     }
 
-    /*public function beforeValidate()
-    {
-        if (!empty($this->date)) {
-            $this->date=\DateTime::createFromFormat()
-        }
-
-        return parent::beforeValidate();
-    }*/
 
     public function attributeLabels()
     {

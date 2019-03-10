@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ActivitySearch */
@@ -51,9 +50,6 @@ $gridParams['columns'][] = ['class' => 'app\widgets\ActivitySearchWidget\WidgetA
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Activity', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?= GridView::widget($gridParams); ?>
 </div>

@@ -8,9 +8,6 @@
 
 namespace app\controllers\actions;
 
-use app\controllers\ActivitySearchController;
-use app\models\Day;
-use app\models\Users;
 use yii\base\Action;
 
 class DayShowAction extends Action

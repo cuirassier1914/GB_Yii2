@@ -36,30 +36,8 @@ class DayComponent extends Component
 
 
 
-            /*if ($params && is_array($params)) {
-                $model -> load($params);
-            } else {
-                $params = [
-                  'year' => 2019,
-                  'month' => 2,
-                  'day' => 24
-                ];
-                $model -> load($params);
-            }*/
-
-
-      /*  $year = (int)$params['year'];
-        $month = (int)$params['month'];
-        $day = (int)$params['day'];*/
-
-
-
-
-        /*$dayOfWeek = date("N", mktime(0, 0, 0, $month, $day, $year));
-
-        $model -> date_title = $day . ' ' . date("F", mktime(0, 0, 0, $month, $day, $year)) . ' ' . $year;
-        $model -> is_weekend = ($dayOfWeek == 6 || $dayOfWeek == 7) ? 'выходной' : 'рабочий';*/
-        /*$model -> activities = [];*/
+        $dayOfWeek = date("N", strtotime($model->date));
+        $model -> is_weekend = ($dayOfWeek == 6 || $dayOfWeek == 7) ? 'выходной' : 'рабочий';
 
 
         return $model;
