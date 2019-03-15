@@ -89,6 +89,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/day/view' => '/activity-search/view',
+                '/day/update' => '/activity-search/update',
+                '/day/delete' => '/activity-search/delete',
             ],
         ]
 

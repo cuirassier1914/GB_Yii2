@@ -41,7 +41,7 @@ if (\Yii::$app->rbac->canViewEditAll()) {
     ];
 }
 
-$gridParams['columns'][] = ['class' => 'app\widgets\ActivitySearchWidget\WidgetActionColumn'];
+$gridParams['columns'][] = ['class' => 'yii\grid\ActionColumn'];
 
 
 ?>
