@@ -45,7 +45,7 @@ class Users extends UsersBase implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return Users::find()->cache(null, new TagDependency(['tags' => 'user_tag']))->andWhere(['id' => $id])->one();
+        return Users::find()/*->cache(null, new TagDependency(['tags' => 'user_tag']))*/->andWhere(['id' => $id])->one();
     }
 
     /**

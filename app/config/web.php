@@ -37,10 +37,11 @@ $config = [
             'class' => yii\rbac\DbManager::class,
         ],
         'rbac' => \app\components\RbacComponent::class,
-        'cache' => [
-            'class' => 'yii\caching\MemCached',
+
+        /*'cache' => [
+            'class' => 'yii\caching\MemCache',
             'useMemcached' => true
-        ],
+        ],*/
         'user' => [
             'identityClass' => 'app\models\Users',
             'enableAutoLogin' => true,

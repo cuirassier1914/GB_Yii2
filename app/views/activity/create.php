@@ -22,16 +22,17 @@
         <?= $form->field($activity, 'title'); ?>
         <?= $form->field($activity, 'description') -> textarea(); ?>
 
-        <?/*= $form->field($activity, 'date_start')->widget(DatePicker::class,
+        <?= $form->field($activity, 'date_start')->widget(DatePicker::class,
             [
-                'options' =>
-                    ['class' => ['form-control']],
-                'dateFormat' => 'd.m.Y'
+                'dateFormat' => 'dd.MM.yyyy'
             ]
-        ); */?>
+        ); ?>
 
-        <?= $form->field($activity, 'date_start'); ?>
-        <?= $form->field($activity, 'date_end'); ?>
+        <?= $form->field($activity, 'date_end')->widget(DatePicker::class,
+            [
+                'dateFormat' => 'dd.MM.yyyy'
+            ]
+        ); ?>
         <?= $form->field($activity, 'is_blocked') -> checkbox(); ?>
         <?= $form->field($activity, 'is_repeat') -> checkbox(); ?>
         <?= $form->field($activity, 'user_notification') -> checkbox(); ?>
