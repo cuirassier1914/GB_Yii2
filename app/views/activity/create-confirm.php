@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <dev class="row">
-    <p>Вы ввели следующую информацию</p>
+    <p><?= Yii::t('app', 'You have inserted following information') ?></p>
     <ul>
         <li><label>ID</label>: <?= Html::encode($activity->user_id) ?></li>
         <li><label>Заголовок</label>: <?= Html::encode($activity->title) ?></li>

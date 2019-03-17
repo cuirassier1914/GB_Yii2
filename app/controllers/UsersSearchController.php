@@ -36,7 +36,7 @@ class UsersSearchController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new UsersSearch();
+        $searchModel = \Yii::$container->get(UsersSearch::class);;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -65,7 +65,7 @@ class UsersSearchController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Users();
+        $model = \Yii::$container->get(Users::class);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -101,9 +101,13 @@ class UsersSearchController extends Controller
         /** @var UserAuthComponent $comp */
         $comp = \Yii::$app->auth;
 
-        $model = $comp->getModel(\Yii::$app->request->post());
+        //$model = $comp->getModel(\Yii::$app->request->post());
+
+        $model = $this->findModel(\Yii::$app->session['__id']);
 
         if (\Yii::$app->request->isPost) {
+
+            $model = $comp->getModel(\Yii::$app->request->post());
 
             if ($comp->changeUserPassword($model)) {
                 \Yii::$app->session->addFlash('success', 'Пароль успешно изменен '.$model->password_hash);

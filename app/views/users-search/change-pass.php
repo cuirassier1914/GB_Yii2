@@ -15,7 +15,7 @@ use yii\helpers\Html;
 
 ?>
 
-<h1>Смена пароля</h1>
+<h1><?= Yii::t('app', 'Change password of user', ['name' => $model->name]); ?></h1>
 <div class="row">
     <div class="col-md-6">
         <?php $form=ActiveForm::begin([
@@ -28,7 +28,7 @@ use yii\helpers\Html;
         <?= $form->field($model, 'new_password_repeat')->passwordInput(); ?>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-success">Сменить пароль</button>
+            <button type="submit" class="btn btn-success"><?= Yii::t('app', 'Change password') ?></button>
         </div>
 
         <?php ActiveForm::end(); ?>

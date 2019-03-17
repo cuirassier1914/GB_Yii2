@@ -10,6 +10,7 @@ namespace app\modules\api\controllers;
 
 
 use app\models\Activity;
+use yii\filters\auth\HttpBasicAuth;
 use yii\rest\ActiveController;
 use app\models\Users;
 use yii\filters\auth\HttpBearerAuth;
@@ -23,7 +24,8 @@ class ActivrestController extends ActiveController
     {
         return array_merge([
             'authentificator' => [
-                'class' => HttpBearerAuth::class,
+                //'class' => HttpBearerAuth::class,
+                'class' => HttpBasicAuth::class,
                 'user' => Users::class
             ],
         ], parent::behaviors());

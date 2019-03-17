@@ -59,7 +59,7 @@ class Activity extends ActivityBase
         ], parent::rules());
     }
 
-    function attributeLabels() {
+    /*function attributeLabels() {
         return [
             'title' => 'Заголовок',
             'description' => 'Описание',
@@ -68,7 +68,7 @@ class Activity extends ActivityBase
             'is_blocked' => 'Блокирующее',
             'is_repeat' => 'Повторяющееся'
         ];
-    }
+    }*/
 
 
     public function loadFile() {

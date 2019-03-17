@@ -10,7 +10,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h2>Создание нового задания</h2>
+        <h2><?= Yii::t('app', 'Create Activity') ?></h2>
 
         <?php $form=ActiveForm::begin([
                 'action' => '/activity/create',
@@ -40,10 +40,10 @@
         <?= $form->field($activity, 'image') -> fileInput();?>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-default">Создать</button>
+            <button type="submit" class="btn btn-default"><?= Yii::t('app', 'Create') ?></button>
         </div>
 
         <?php ActiveForm::end(); ?>
     </div>
-    <a href="/calender"><button>Календарь</button></a>
+    <a href="/calender"><button><?= Yii::t('app', 'Calender') ?></button></a>
 </div>

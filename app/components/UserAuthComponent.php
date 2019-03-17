@@ -16,6 +16,10 @@ use yii\base\Component;
 class UserAuthComponent extends Component
 {
 
+    /**@var string class of users entity*/
+
+    public $auth_class;
+
     /**
      * @param null $params
      * @return Users
@@ -23,7 +27,9 @@ class UserAuthComponent extends Component
     public function getModel($params=null) {
 
         /** @var Users $model */
-        $model = new Users();
+        //$model = new Users();
+
+        $model = \Yii::$container->get($this->auth_class);
 
         if ($params) {
             $model->load($params);

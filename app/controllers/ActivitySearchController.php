@@ -35,7 +35,7 @@ class ActivitySearchController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ActivitySearch();
+        $searchModel = \Yii::$container->get(ActivitySearch::class);
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -65,7 +65,7 @@ class ActivitySearchController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Activity();
+        $model = \Yii::$container->get(Activity::class);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

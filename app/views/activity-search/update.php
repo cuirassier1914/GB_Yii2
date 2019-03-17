@@ -13,6 +13,7 @@ $this->params['breadcrumbs'][] = 'Update';
 <div class="activity-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <p><?= Yii::t('app', 'Date Start', [strtotime($model->date_start)]); ?></p>
 
     <?= $this->render('_form', [
         'model' => $model,
