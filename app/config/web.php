@@ -17,11 +17,18 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Module',
         ],
+        'api' => [
+            'basePath' => '@app/modules/api',
+            'class' => 'app\modules\api\Module',
+        ],
     ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'bcnv19tgguBu5dC9MzLQmEkpDmhAzoZ_',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
         'activity' => [
             'class' => \app\components\ActivityComponent::class,
@@ -88,10 +95,16 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
                 '/day/view' => '/activity-search/view',
                 '/day/update' => '/activity-search/update',
                 '/day/delete' => '/activity-search/delete',
+                [
+                    'class' => yii\rest\UrlRule::class,
+                    'controller' => ['api/activrest'],
+                    'pluralize' => false,
+                ],
             ],
         ]
 

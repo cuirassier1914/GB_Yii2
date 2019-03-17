@@ -10,6 +10,7 @@ namespace app\components;
 
 
 use app\models\Users;
+use mysql_xdevapi\Session;
 use yii\base\Component;
 
 class UserAuthComponent extends Component
@@ -38,6 +39,7 @@ class UserAuthComponent extends Component
         }
 
         $model->password_hash = $this->hashPassword($model->password);
+        $model->token = $this->hashPassword(random_int(0,9999));
 
         $transaction = \Yii::$app->db->beginTransaction();
         try {
@@ -83,6 +85,45 @@ class UserAuthComponent extends Component
 
         return \Yii::$app->user->login($user);
 
+    }
+
+
+
+    public function changeUserPassword(&$model):bool
+    {
+
+//?
+        $user = $this->getModel()::find()->andWhere(['id' => \Yii::$app->session['__id']])->one();
+
+        if (!$this->validatePassword($model->password, $user->password_hash)) {
+            $model->addError('password', 'Неверный пароль!');
+            return false;
+        }
+
+        if (!$model->validate(['new_password', 'new_password_repeat'])) {
+            return false;
+        }
+
+        $model->password_hash = $this->hashPassword($model->new_password);
+
+        $model->save();
+
+        return true;
+
+
+        /*$transaction = \Yii::$app->db->beginTransaction();
+        try {
+
+            //проверить, save или update
+            $model->updateAttributes(['password_hash' => $model->password_hash]);
+
+            $transaction->commit();
+
+            return true;
+        }
+        catch (\Throwable $e) {
+            $transaction->rollBack();
+        }*/
     }
 
     public function getUserByEmail($email) {

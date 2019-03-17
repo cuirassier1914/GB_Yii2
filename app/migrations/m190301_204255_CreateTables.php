@@ -12,7 +12,7 @@ class m190301_204255_CreateTables extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('user', [
+        $this->createTable('users', [
            'id' => $this->primaryKey(),
            'email' => $this->string(150)->notNull(),
            'password_hash' => $this->string(300)->notNull(),
@@ -39,7 +39,7 @@ class m190301_204255_CreateTables extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('user');
+        $this->dropTable('users');
         $this->dropTable('activity');
     }
 
