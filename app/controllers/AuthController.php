@@ -38,6 +38,7 @@ class AuthController extends Controller
 
     public function actionSignIn()
     {
+
         /** @var UserAuthComponent $comp */
         $comp = \Yii::$app->auth;
 
@@ -47,7 +48,10 @@ class AuthController extends Controller
         if (\Yii::$app->request->isPost) {
 
             if ($comp->loginUser($model)) {
-                $this->redirect(['/activity/create']);
+                //$this->redirect(['/activity/create']);
+                //$this->redirect(\Yii::$app->request->referrer);
+                $this->goBack();
+
             }
         }
 

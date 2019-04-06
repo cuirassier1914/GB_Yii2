@@ -2,17 +2,18 @@
 
 namespace app\controllers;
 
+use app\base\BaseController;
 use Yii;
 use app\models\Activity;
 use app\models\ActivitySearch;
-use yii\web\Controller;
+//use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * ActivitySearchController implements the CRUD actions for Activity model.
  */
-class ActivitySearchController extends Controller
+class ActivitySearchController extends BaseController
 {
     /**
      * {@inheritdoc}
