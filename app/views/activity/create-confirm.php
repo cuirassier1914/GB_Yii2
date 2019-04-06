@@ -11,6 +11,7 @@ use yii\widgets\ActiveForm;
 
 
 //var_dump($activity -> validate());
+
 ?>
 
 <dev class="row">
@@ -34,9 +35,6 @@ use yii\widgets\ActiveForm;
     'action' => '/activity/edit',
     'method' => 'POST',
     'id' => 'activity',
-/*    'options' => [
-        'enctype' => ''
-    ]*/
 ]); ?>
 
 <?= $form->field($activity, 'title') -> label(false) -> hiddenInput(['value' => Html::encode($activity->title)]); ?>
@@ -58,9 +56,6 @@ use yii\widgets\ActiveForm;
     'action' => '/activity/confirm',
     'method' => 'POST',
     'id' => 'activity',
-    /*    'options' => [
-            'enctype' => ''
-        ]*/
 ]); ?>
 
 <?= $form->field($activity, 'title') -> label(false) -> hiddenInput(['value' => Html::encode($activity->title)]); ?>

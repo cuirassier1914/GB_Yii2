@@ -10,6 +10,7 @@ namespace app\controllers\actions;
 
 
 use app\components\ActivityComponent;
+use app\components\DayComponent;
 use app\models\Activity;
 use yii\base\Action;
 
@@ -25,9 +26,9 @@ class ActivityConfirmAction extends Action
 
                 if ($activity->confirmed) {
 
-                    $day = \Yii::$app->day->getModel();
-
                     $comp->createActivity($activity);
+                    /** @var DayComponent $day */
+                    $day = \Yii::$app->day->getModel(['date' => $activity -> date_start]);
 
                     return $this->controller->render('../day/show', ['day' => $day, 'activity' => $activity]);
                 }

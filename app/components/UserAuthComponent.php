@@ -69,7 +69,7 @@ class UserAuthComponent extends Component
 
     }
 
-    private function hashPassword($password) {
+    public function hashPassword($password) {
         return \Yii::$app->security->generatePasswordHash($password);
     }
 
@@ -95,10 +95,9 @@ class UserAuthComponent extends Component
 
 
 
-    public function changeUserPassword(&$model):bool
+/*    public function changeUserPassword(&$model):bool
     {
 
-//?
         $user = $this->getModel()::find()->andWhere(['id' => \Yii::$app->session['__id']])->one();
 
         if (!$this->validatePassword($model->password, $user->password_hash)) {
@@ -115,22 +114,8 @@ class UserAuthComponent extends Component
         $model->save();
 
         return true;
-
-
-        /*$transaction = \Yii::$app->db->beginTransaction();
-        try {
-
-            //проверить, save или update
-            $model->updateAttributes(['password_hash' => $model->password_hash]);
-
-            $transaction->commit();
-
-            return true;
-        }
-        catch (\Throwable $e) {
-            $transaction->rollBack();
-        }*/
-    }
+        
+    }*/
 
     public function getUserByEmail($email) {
         return $this->getModel()::find()->andWhere(['email' => $email])->one();

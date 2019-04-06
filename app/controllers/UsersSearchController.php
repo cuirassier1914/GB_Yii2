@@ -98,16 +98,59 @@ class UsersSearchController extends Controller
 
     public function actionChangePass()
     {
-        /** @var UserAuthComponent $comp */
-        $comp = \Yii::$app->auth;
-
-        //$model = $comp->getModel(\Yii::$app->request->post());
 
         $model = $this->findModel(\Yii::$app->session['__id']);
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            /** @var UserAuthComponent $comp */
+            $comp = Yii::$app->auth;
+
+            if (!$comp->validatePassword($model->password, $model->password_hash)) {
+                $model->addError('password', 'Неверный пароль!');
+                return false;
+            }
+
+            if (!$model->validate(['new_password', 'new_password_repeat'])) {
+                return false;
+            }
+
+            $model->password_hash = $comp->hashPassword($model->new_password);
+
+
+            if ($model->save()) {
+                \Yii::$app->session->addFlash('success', 'Пароль успешно изменен ' . $model->password_hash);
+                return $this->redirect(['/users-search/index']);
+            } else {
+                \Yii::$app->session->addFlash('success', 'Ошибка изменения пароля ');
+            }
+
+
+        }
+
+        return $this->render('change-pass', [
+            'model' => $model,
+        ]);
+
+
+
+
+
+
+
+        /*$id = \Yii::$app->session['__id'];*/
+
+        /** @var UserAuthComponent $comp */
+        /*$comp = \Yii::$app->auth;
+
+
+        $model = $this->findModel($id);
 
         if (\Yii::$app->request->isPost) {
 
             $model = $comp->getModel(\Yii::$app->request->post());
+
+
 
             if ($comp->changeUserPassword($model)) {
                 \Yii::$app->session->addFlash('success', 'Пароль успешно изменен '.$model->password_hash);
@@ -118,7 +161,7 @@ class UsersSearchController extends Controller
 
         return $this->render('change-pass', [
             'model' => $model,
-        ]);
+        ]);*/
     }
 
     /**

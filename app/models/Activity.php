@@ -55,20 +55,10 @@ class Activity extends ActivityBase
             ['description', 'string'],
             [['title', 'date_start'], 'required'],
             ['email', 'email'],
-            [['image'], 'file', 'extensions' => 'png, jpg'/*, 'maxFiles' => 4*/]
+            [['image'], 'file', 'extensions' => 'png, jpg'/*, 'maxFiles' => 4*/],
+            ['confirmed', 'boolean']
         ], parent::rules());
     }
-
-    /*function attributeLabels() {
-        return [
-            'title' => 'Заголовок',
-            'description' => 'Описание',
-            'date_start' => 'Дата начала',
-            'date_end' => 'Дата окончания',
-            'is_blocked' => 'Блокирующее',
-            'is_repeat' => 'Повторяющееся'
-        ];
-    }*/
 
 
     public function loadFile() {
