@@ -26,7 +26,12 @@ $gridParams = [
                 return Yii::$app->viewFormatter->asDate($model->date_start);
             },
         ],
-        'date_end',
+        [
+            'attribute' => 'date_end',
+            'value' => function($model){
+                return Yii::$app->viewFormatter->asDate($model->date_end);
+            },
+        ],
     ],
 ];
 

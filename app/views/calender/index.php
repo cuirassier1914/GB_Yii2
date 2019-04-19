@@ -9,6 +9,8 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 
+//подключаем Asset
+\app\assets\CalenderAsset::register($this);
 ?>
 
 
@@ -146,11 +148,11 @@ for($i = 0; $i < count($week); $i++)
             // Если имеем дело с выбраной датой подсвечиваем ee
             if($week[$i][$j]==$day)
             {
-                echo '<td class="today">';
+                echo '<td class="today dayTd">';
             }
             else
             {
-                echo '<td>';
+                echo '<td class="dayTd">';
             }
 
 
@@ -165,6 +167,7 @@ for($i = 0; $i < count($week); $i++)
 
 
 
+            echo '<div class="form-group dayCell">';
 
             $form=ActiveForm::begin([
                 'action' => '/day/show',
@@ -172,11 +175,12 @@ for($i = 0; $i < count($week); $i++)
                 'id' => 'day',
             ]);
 
+
             echo $form->field($dayModel, 'date') -> label(false) -> hiddenInput(['value' =>
                 \Yii::$app->sqlFormatter->asDate($dateOfDay)]);
 
-            echo '<div class="form-group">
-                <button type="submit" class="btn btn-default">'.$week[$i][$j].'</button>
+            echo '
+                <button type="submit" class="dayButton">'.$week[$i][$j].'</button>
                    </div>';
 
             ActiveForm::end();

@@ -57,13 +57,6 @@ class ActivityComponent extends Component
 
             }
 
-            if ($model->confirmed) {
-                $model->save();
-            }
-
-
-
-
             return true;
         }
     }

@@ -9,7 +9,7 @@
 return [
     'Title' => 'Заголовок',
     'Description' => 'Описание',
-    'Date Start' => 'Дата начала: {0, date, dd.MM.yyyy}',
+    'Date Start' => 'Дата начала',
     'Date End' => 'Дата окончания',
     'User Notification' => 'Уведомление пользователя',
     'Is Blocked' => 'Блокирующее',
@@ -22,5 +22,7 @@ return [
     'You have inserted following information' => 'Вы ввели следующую информацию',
     'Change password of user' => 'Сменить пароль пользователя {name}',
     'Change password' => 'Сменить пароль',
+    'Update' => 'Редактировать',
+    'Delete' => 'Удалить'
 
 ];

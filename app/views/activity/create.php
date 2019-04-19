@@ -12,7 +12,7 @@
         <h2><?= Yii::t('app', 'Create Activity') ?></h2>
 
         <?php $form=ActiveForm::begin([
-                'action' => '/activity/create',
+                'action' => '/activity/confirm',
                 'method' => 'POST',
                 'id' => 'activity',
         ]); ?>

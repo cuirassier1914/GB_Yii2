@@ -114,11 +114,6 @@ a.desc:after {
     outline: none;
 }
 
-
-.today > form > div > button {
-    color: red;
-}
-
 .month_year {
     text-align: center;
 }
